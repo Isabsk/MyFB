@@ -64,11 +64,17 @@ app.use(express.static(path.join(__dirname, 'static')));
 app.set('view engine', 'ejs');
 // req.isAuthenticated is provided from the auth router
 app.get('/', (req, res) => {
+        if (req.oidc.user) {
         const number = save.find({ user_id: req.oidc.user.sub}).count(function (err, count) {
 	save.find ({}).sort({_id:  -1}).exec( function (err,detail){
         res.render(req.oidc.isAuthenticated() ? 'index' : 'index2' , { user: req.oidc.user , details: detail, count: count})
       })
    })
+   } else {
+   	save.find ({}).sort({_id:  -1}).exec( function (err,detail){
+        res.render(req.oidc.isAuthenticated() ? 'index' : 'index2' , { user: req.oidc.user , details: detail})
+      })
+   }
 });
 
 app.get('/profile', requiresAuth(), (req, res) => {
