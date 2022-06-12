@@ -11,7 +11,7 @@ const app = express()
 const config = {
   authRequired: false,
   auth0Logout: true,
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://myfb.onrender.com',
   clientID: '9xDK4O0zsyC2cbCuba9VzBrQhK0lcU8z',
   issuerBaseURL: 'https://dev-tdco1d5t.us.auth0.com',
   secret: 'jzz2meKNJ0MSDWmZ43ee6e23e95jlanKXNp14ZFnk3q-HVbN7XZurIlXqjjYEPG0'
